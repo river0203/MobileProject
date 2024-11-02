@@ -12,5 +12,6 @@ public class RecipeModel {
     public void printIngredients() {
         for (String ingredient : ingredients) {
             System.out.println(ingredient);
+        }
     }
 }
