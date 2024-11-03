@@ -8,6 +8,8 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 public class RecipeClient {
+    //change to method
+    //call the client -> btn event
     public static void main(String[] args) {
         try(Socket client = new Socket())
         {
