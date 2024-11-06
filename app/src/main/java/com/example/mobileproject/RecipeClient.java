@@ -16,11 +16,11 @@ public class RecipeClient {
 
     public void connectToServer() {
         try (Socket socket = new Socket(SERVER_IP, SERVER_PORT)) {
-            socket.setSoTimeout(5000);  // 타임아웃 설정
+
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
             DataInputStream in = new DataInputStream(socket.getInputStream());
 
-            String message = "Hello Server!";
+            String message = "계란, 파, 간장으로 만들수 있는 간단한 레시피 한국어로 자세히 알려줘";
             byte[] data = message.getBytes();
 
             ByteBuffer b = ByteBuffer.allocate(4);
@@ -48,25 +48,6 @@ public class RecipeClient {
             message = new String(data, "UTF-8");
             // 콘솔에 출력한다.
             System.out.println(message);
-
-            // 메시지 길이 전송
-            /*out.writeInt(data.length);
-            out.flush();
-
-            // 메시지 전송
-            out.write(data);
-            out.flush();
-
-            // 서버의 응답 길이 수신
-            int responseLength = in.readInt();
-            if (responseLength > 0) {
-                byte[] responseData = new byte[responseLength];
-                in.readFully(responseData);
-                String response = new String(responseData);
-                Log.d("Server Response", response);
-            } else {
-                Log.e("Socket Error", "No response received from the server.");
-            }*/
 
         } catch (SocketTimeoutException e) {
             Log.e("Socket Error", "Connection timed out", e);
