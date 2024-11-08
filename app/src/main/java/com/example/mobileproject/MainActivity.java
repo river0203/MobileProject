@@ -1,17 +1,32 @@
 package com.example.mobileproject;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+
+    String text;
+
+    EditText editText;
+    TextView inputIngredient;
+    Button btnIngredientSave;
+    Button btnClient;
+
+    RecipeModel ingredientList = new RecipeModel();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnClient = findViewById(R.id.button);
+        editText = findViewById(R.id.editTextText);
+        inputIngredient = findViewById(R.id.inputIngredient);
+        btnIngredientSave = findViewById(R.id.button2);
+        btnClient = findViewById(R.id.button);
 
         btnClient.setOnClickListener(v -> {
             // 네트워크 작업을 백그라운드 스레드에서 실행
@@ -19,6 +34,19 @@ public class MainActivity extends AppCompatActivity {
                 RecipeClient client = new RecipeClient();
                 client.connectToServer();
             }).start();
+        });
+
+        btnIngredientSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                text = editText.getText().toString();
+                ingredientList.setPulsIngredients(text);
+                ingredientList.printAryList();
+
+                if(text != null)
+                    inputIngredient.setText(text);
+                editText.setText("");
+            }
         });
     }
 }

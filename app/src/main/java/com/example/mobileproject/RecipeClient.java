@@ -57,7 +57,4 @@ public class RecipeClient {
             Log.e("Socket Error", "I/O Error", e);
         }
     }
-
-
-
 }
