@@ -21,10 +21,10 @@ public class RecipeClient {
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
             DataInputStream in = new DataInputStream(socket.getInputStream());
 
-            //String message = "계란, 파, 간장으로 만들수 있는 간단한 레시피 한국어로 자세히 알려줘";
+            String message = "계란, 파, 간장으로 만들수 있는 간단한 레시피 한국어로 자세히 알려줘";
 
-            String message = ingredientList.getStrIngredientList();
-            message = message.concat(basicMsg);
+            //String message = ingredientList.getStrIngredientList();
+            //message = message.concat(basicMsg);
             byte[] data = message.getBytes();
 
             ByteBuffer b = ByteBuffer.allocate(4);
