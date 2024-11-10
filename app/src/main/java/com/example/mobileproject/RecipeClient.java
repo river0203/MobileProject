@@ -22,6 +22,7 @@ public class RecipeClient {
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
             DataInputStream in = new DataInputStream(socket.getInputStream());
 
+            //Error : null 값을 return 함 수정
             //String message = "계란, 파, 간장으로 만들수 있는 간단한 레시피 한국어로 자세히 알려줘";
             String message = ingredientList.getMsgList();
             message = message.concat(basicMsg);
