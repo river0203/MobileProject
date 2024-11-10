@@ -13,6 +13,8 @@ import java.nio.ByteOrder;
 public class RecipeClient {
     private static final String SERVER_IP = "10.0.2.2";
     private static final int SERVER_PORT = 8000;
+    private RecipeModel ingredientList = new RecipeModel();
+    private String basicMsg = "으로 만들수 있는 간단한 레시피 한국어로 자세히 알려줘";
 
     public void connectToServer() {
         try (Socket socket = new Socket(SERVER_IP, SERVER_PORT)) {
@@ -20,7 +22,9 @@ public class RecipeClient {
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
             DataInputStream in = new DataInputStream(socket.getInputStream());
 
-            String message = "계란, 파, 간장으로 만들수 있는 간단한 레시피 한국어로 자세히 알려줘";
+            //String message = "계란, 파, 간장으로 만들수 있는 간단한 레시피 한국어로 자세히 알려줘";
+            String message = String.join(" ", ingredientList.getIngredients());
+            message = message.concat(basicMsg);
             byte[] data = message.getBytes();
 
             ByteBuffer b = ByteBuffer.allocate(4);

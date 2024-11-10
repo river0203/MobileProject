@@ -6,9 +6,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
-
+//TODO : arraylist 단어 합치기, 단어 합쳐서 저장 -> 서버 전달
 public class MainActivity extends AppCompatActivity {
-
     String text;
 
     EditText editText;
