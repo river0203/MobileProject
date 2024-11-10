@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 //TODO : arraylist 단어 합치기, 단어 합쳐서 저장 -> 서버 전달
 public class MainActivity extends AppCompatActivity {
     String text;
+    String tempMsgList;
 
     EditText editText;
     TextView inputIngredient;
@@ -40,7 +41,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 text = editText.getText().toString();
                 ingredientList.setPulsIngredients(text);
+
                 ingredientList.printAryList();
+                tempMsgList = ingredientList.engraftIngredientsList(ingredientList.getIngredients());
+                ingredientList.setMsgList(tempMsgList);
 
                 if(text != null)
                     inputIngredient.setText(text);
