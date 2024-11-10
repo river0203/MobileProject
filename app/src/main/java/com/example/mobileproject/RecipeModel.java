@@ -4,12 +4,18 @@ import java.util.List;
 
 public class RecipeModel {
     private List<String> ingredients = new ArrayList<>();
+    private String strIngredientList;
 
     public void setPulsIngredients(String ingredient) {
         this.ingredients.add(ingredient);
+        strIngredientList = String.join(" ", ingredients);
     }
     public List<String> getIngredients() {
-        return ingredients;
+        return this.ingredients;
+    }
+
+    public String getStrIngredientList() {
+        return strIngredientList;
     }
 
     public void printAryList()

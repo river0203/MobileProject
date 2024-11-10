@@ -16,14 +16,14 @@ public class RecipeClient {
     private RecipeModel ingredientList = new RecipeModel();
     private String basicMsg = "으로 만들수 있는 간단한 레시피 한국어로 자세히 알려줘";
 
-    public void connectToServer() {
-        try (Socket socket = new Socket(SERVER_IP, SERVER_PORT)) {
+    public void connectToServer() {try (Socket socket = new Socket(SERVER_IP, SERVER_PORT)) {
 
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
             DataInputStream in = new DataInputStream(socket.getInputStream());
 
             //String message = "계란, 파, 간장으로 만들수 있는 간단한 레시피 한국어로 자세히 알려줘";
-            String message = String.join(" ", ingredientList.getIngredients());
+
+            String message = ingredientList.getStrIngredientList();
             message = message.concat(basicMsg);
             byte[] data = message.getBytes();
 
