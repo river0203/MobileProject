@@ -4,7 +4,7 @@ import java.util.List;
 
 public class RecipeModel {
     private List<String> ingredients = new ArrayList<>();
-    private String strIngredientList;
+    private static String strIngredientList;
 
     public void setPulsIngredients(String ingredient) {
         this.ingredients.add(ingredient);
