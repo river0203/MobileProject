@@ -10,13 +10,15 @@ import java.net.SocketTimeoutException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
+// TODO : gpt에서 동일한 답변을 출력하는지 확인하고 프롬프트 조정
+
 public class RecipeClient {
     private static final String SERVER_IP = "10.0.2.2";
     private static final int SERVER_PORT = 8000;
     private static String message;
     
     private RecipeModel ingredientList = new RecipeModel();
-    private String basicMsg = "으로 만들수 있는 간단한 레시피 한국어로 10 스텝 이하로 알려줘, 추가로 사진도 가능한가";
+    private String basicMsg = "으로 만들수 있는 간단한 레시피";
 
     public void connectToServer() {try (Socket socket = new Socket(SERVER_IP, SERVER_PORT)) {
 
