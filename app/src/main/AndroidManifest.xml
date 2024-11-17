@@ -17,10 +17,16 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Plus_Main_Page"
+            android:exported="true"/>
+        <activity android:name=".Plus_Plus_Page"
+            android:exported="true"/>
+        <activity android:name=".Recommend_Menu_Page"
+            android:exported="true"/>
+
     </application>
 
 </manifest>

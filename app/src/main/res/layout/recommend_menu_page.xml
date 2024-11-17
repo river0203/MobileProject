@@ -20,20 +20,6 @@
             android:text="B"
             android:textSize="30dp" />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/plus_plus_page"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="plus"
-            android:textSize="30dp"
-            android:background="#f7f7f7"
-            />
 
     </LinearLayout>
 
@@ -43,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:layout_marginLeft="10dp"
-        android:text="Plus+"
+        android:text="Recommend"
         android:textSize="48dp"
         android:textColor="#FF000000"
         android:textStyle="bold"/>
@@ -68,23 +54,20 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="@dimen/cardview_compat_inset_shadow"
-            android:background="@drawable/plus_main_scrollview">
+            android:layout_height="match_parent"
+            android:elevation="10dp"
+            android:background="@drawable/plus_main_scrollview"
+            android:layout_marginBottom="25dp">
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/ingredient_listview"
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scrollbars="vertical" />
 
         </ScrollView>
-        <Button
-            android:id="@+id/recommend_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="추천 받기"/>
+
     </LinearLayout>
 
 

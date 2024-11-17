@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:background="#f7f7f7"
+            android:background="@drawable/backbutton"
             android:text="b"
             android:textSize="30dp" />
 
@@ -53,7 +53,7 @@
             />
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/name_edittext"
@@ -73,31 +73,41 @@
             android:padding="20dp"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            >
-            <!--버튼도 바꿔야 됨.        -->
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Button" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="  "
-                android:textStyle="bold"
-                android:textColor="#ff000000"
-                android:textSize="15dp"
-                android:padding="15dp"
-                />
+            android:gravity="center"
+            android:padding="16dp">
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/button_minus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="-"
+                android:layout_marginEnd="10dp" />
+
+            <EditText
+                android:id="@+id/editTextNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:inputType="number"
+                android:hint="0"
+                android:text="0" />
+
+            <Button
+                android:id="@+id/button_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:layout_marginStart="10dp" />
         </LinearLayout>
+        <Button
+            android:id="@+id/save_ingredient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Save" />
+
     </LinearLayout>
 
 </LinearLayout>
