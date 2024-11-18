@@ -1,5 +1,6 @@
 package com.example.mobileproject.recommend;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mobileproject.MainActivity;
 import com.example.mobileproject.R;
+import com.example.mobileproject.SionActivity;
+import com.example.mobileproject.plus.Plus_Main_Page;
 
 import java.util.List;
 
@@ -38,10 +42,18 @@ public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.ViewHolder> 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Menu Clicked", "Clicked item: " + menu.getName());
+                // 현재 컨텍스트에서 SionActivity로 이동
+                Intent intent = new Intent(v.getContext(), SionActivity.class);
+
+                // 선택된 메뉴 데이터를 전달
+                intent.putExtra("menu_name", menu.getName());
+                intent.putExtra("menu_ingredients", String.join(", ", menu.getIngredients()));
+
+                v.getContext().startActivity(intent);
             }
         });
     }
+
 
     @Override
     public int getItemCount() {
