@@ -1,4 +1,4 @@
-package com.example.mobileproject;
+package com.example.mobileproject.recommend;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

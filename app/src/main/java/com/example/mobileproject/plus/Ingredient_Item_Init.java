@@ -1,4 +1,4 @@
-package com.example.mobileproject;
+package com.example.mobileproject.plus;
 
 public class Ingredient_Item_Init {
     private String ingredint_name;

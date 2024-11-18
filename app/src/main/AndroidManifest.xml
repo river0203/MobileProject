@@ -20,11 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Plus_Main_Page"
+        <activity android:name=".plus.Plus_Main_Page"
             android:exported="true"/>
-        <activity android:name=".Plus_Plus_Page"
+        <activity android:name=".plus.Plus_Plus_Page"
             android:exported="true"/>
-        <activity android:name=".Recommend_Menu_Page"
+        <activity android:name=".recommend.Recommend_Menu_Page"
             android:exported="true"/>
 
     </application>

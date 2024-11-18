@@ -1,4 +1,4 @@
-package com.example.mobileproject;
+package com.example.mobileproject.plus;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.mobileproject.R;
 
 
 public class Plus_Plus_Page extends AppCompatActivity {
