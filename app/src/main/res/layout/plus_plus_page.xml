@@ -16,8 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:background="@drawable/backbutton"
-            android:text="b"
+            android:background="@drawable/b_button"
             android:textSize="30dp" />
 
 
@@ -71,41 +70,49 @@
             android:textColor="#ff000000"
             android:textSize="20dp"
             android:padding="20dp"/>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center"
             android:padding="16dp">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_minus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="-"
-                android:layout_marginEnd="10dp" />
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/quantitiy_button"
+                android:text="-" />
 
             <EditText
                 android:id="@+id/editTextNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:gravity="center"
                 android:inputType="number"
                 android:hint="0"
                 android:text="0" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_plus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/quantitiy_button"
                 android:text="+"
-                android:layout_marginStart="10dp" />
+                android:textStyle="bold" />
+
         </LinearLayout>
-        <Button
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/save_ingredient"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:background="@drawable/main_plus_button"
+            android:textColor="@color/white"
             android:text="Save" />
 
     </LinearLayout>

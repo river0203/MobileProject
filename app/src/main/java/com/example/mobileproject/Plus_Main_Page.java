@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Plus_Main_Page extends AppCompatActivity {
-    private static final String TAG = "Plus_Main_Page"; // Log 태그
+    private static final String TAG = "Plus_Main_Page";
     private List<Ingredient_Item_Init> ingredientItemList = new ArrayList<>();
     private Ingredient_Adapter ingredientAdapter;
 
@@ -38,22 +38,27 @@ public class Plus_Main_Page extends AppCompatActivity {
         plus_PlusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "click"); // 버튼 클릭 확인 로그
                 Intent intent = new Intent(Plus_Main_Page.this, Plus_Plus_Page.class);
                 startActivityForResult(intent, 100);
             }
         });
 
 
+        Button back_MainActivity = findViewById(R.id.back_mainActivity_button);
+        back_MainActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent backIntent = new Intent(Plus_Main_Page.this, MainActivity.class );
+                startActivity(backIntent);
+                finish();
+            }
+        });
+
+
+
+
 
         Button recommendButton = findViewById(R.id.recommend_button);
-        recommendButton.setOnClickListener(view -> {
-            Log.d(TAG, "Recommend click");
-            JSONObject jsonResult = Json_Conversion.convertToJSON(ingredientItemList);
-
-            // Logcat에서 변환된 JSON 확인 (Json_Conversion에서 이미 출력함)
-            Log.d(TAG, "Final JSON Result: " + jsonResult.toString());
-        });
     }
 
 
