@@ -16,8 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:background="#f7f7f7"
-            android:text="b"
+            android:background="@drawable/b_button"
             android:textSize="30dp" />
 
 
@@ -53,7 +52,7 @@
             />
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/name_edittext"
@@ -71,33 +70,51 @@
             android:textColor="#ff000000"
             android:textSize="20dp"
             android:padding="20dp"/>
+
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            >
-            <!--버튼도 바꿔야 됨.        -->
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Button" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="  "
-                android:textStyle="bold"
-                android:textColor="#ff000000"
-                android:textSize="15dp"
-                android:padding="15dp"
-                />
+            android:padding="16dp">
 
-            <Button
-                android:id="@+id/button4"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_minus"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/quantitiy_button"
+                android:text="-" />
+
+            <EditText
+                android:id="@+id/editTextNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="center"
+                android:inputType="number"
+                android:hint="0"
+                android:text="0" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_plus"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/quantitiy_button"
+                android:text="+"
+                android:textStyle="bold" />
+
         </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/save_ingredient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/main_plus_button"
+            android:textColor="@color/white"
+            android:text="Save" />
+
     </LinearLayout>
 
 </LinearLayout>
