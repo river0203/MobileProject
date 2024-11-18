@@ -26,6 +26,8 @@
             android:exported="true"/>
         <activity android:name=".recommend.Recommend_Menu_Page"
             android:exported="true"/>
+        <activity android:name=".sionActivity"
+            android:exported="true"/>
 
     </application>
 
