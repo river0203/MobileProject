@@ -1,5 +1,6 @@
 package com.example.mobileproject;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +32,13 @@ public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.ViewHolder> 
         Menu_Init menu = menuList.get(position);
         holder.nameTextView.setText(menu.getName());
         holder.ingredientsTextView.setText(String.join(", ", menu.getIngredients()));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Menu Clicked", "Clicked item: " + menu.getName());
+            }
+        });
     }
 
     @Override

@@ -9,11 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Recommend_Menu_Page extends AppCompatActivity {
@@ -36,7 +31,7 @@ public class Recommend_Menu_Page extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        // 하드 코딩
+        //하드 코딩
         String jsonData = "{\n" +
                 "    \"recipe1\": {\n" +
                 "        \"name\": \"햄 계란 볶음밥\",\n" +
@@ -72,37 +67,12 @@ public class Recommend_Menu_Page extends AppCompatActivity {
                 "            \"간장, 설탕, 후추로 간을 맞추고 완성한다.\"\n" +
                 "        ]\n" +
                 "    }\n" +
-                "}"; // 여기에 JSON 데이터 추가
-        List<Menu_Init> menuList = parseJsonData(jsonData);
+                "}";
+
+        // ParseJson 클래스 사용
+        List<Menu_Init> menuList = ParseJson.parseJsonData(jsonData);
 
         Menu_Adapter adapter = new Menu_Adapter(menuList);
         recyclerView.setAdapter(adapter);
-    }
-
-    // JSON 데이터를 파싱하는 메서드
-    private List<Menu_Init> parseJsonData(String jsonData) {
-        List<Menu_Init> menuList = new ArrayList<>();
-        try {
-            JSONObject jsonObject = new JSONObject(jsonData);
-            Iterator<String> keys = jsonObject.keys();
-
-            while (keys.hasNext()) {
-                String key = keys.next();
-                JSONObject menuObject = jsonObject.getJSONObject(key);
-
-                String name = menuObject.getString("name");
-                JSONArray ingredientsArray = menuObject.getJSONArray("ingredients");
-
-                List<String> ingredients = new ArrayList<>();
-                for (int i = 0; i < ingredientsArray.length(); i++) {
-                    ingredients.add(ingredientsArray.getString(i));
-                }
-
-                menuList.add(new Menu_Init(name, ingredients));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return menuList;
     }
 }
