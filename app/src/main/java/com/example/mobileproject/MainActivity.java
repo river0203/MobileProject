@@ -40,5 +40,12 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        recommendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 }
