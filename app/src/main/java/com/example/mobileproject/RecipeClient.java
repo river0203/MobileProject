@@ -81,8 +81,4 @@ public class RecipeClient {
         return clientInstance;
     }
 
-    private String getGptMessage()
-    {
-        return message;
-    }
 }

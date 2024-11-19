@@ -24,7 +24,7 @@ public class Plus_Main_Page extends AppCompatActivity {
     private List<Ingredient_Item_Init> ingredientItemList = new ArrayList<>();
     private Ingredient_Adapter ingredientAdapter;
     private Button btnRecipeBtn;
-    private RecipeClient recipeClient = new RecipeClient();
+    private RecipeClient recipeClient = RecipeClient.getClientInstance();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,8 +41,7 @@ public class Plus_Main_Page extends AppCompatActivity {
         btnRecipeBtn.setOnClickListener(v -> {
             // 네트워크 작업을 백그라운드 스레드에서 실행
             new Thread(() -> {
-                RecipeClient client = new RecipeClient();
-                client.connectToServer();
+                 recipeClient.connectToServer();
             }).start();
         });
 
