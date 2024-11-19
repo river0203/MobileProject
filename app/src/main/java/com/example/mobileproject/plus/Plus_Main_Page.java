@@ -38,14 +38,14 @@ public class Plus_Main_Page extends AppCompatActivity {
         recyclerView.setAdapter(ingredientAdapter);
         btnRecipeBtn = findViewById(R.id.recommend_button);
 
-        btnRecipeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //connect sever
-                //has error
-                recipeClient.connectToServer();
-            }
+        btnRecipeBtn.setOnClickListener(v -> {
+            // 네트워크 작업을 백그라운드 스레드에서 실행
+            new Thread(() -> {
+                RecipeClient client = new RecipeClient();
+                client.connectToServer();
+            }).start();
         });
+
 
 
 
