@@ -21,6 +21,7 @@ public class Plus_Main_Page extends AppCompatActivity {
     private static final String TAG = "Plus_Main_Page";
     private List<Ingredient_Item_Init> ingredientItemList = new ArrayList<>();
     private Ingredient_Adapter ingredientAdapter;
+    private Button btnRecipeBtn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,6 +33,14 @@ public class Plus_Main_Page extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         ingredientAdapter = new Ingredient_Adapter(this, ingredientItemList);
         recyclerView.setAdapter(ingredientAdapter);
+        btnRecipeBtn = findViewById(R.id.recommend_button);
+
+        btnRecipeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //connect sever
+            }
+        });
 
 
 
