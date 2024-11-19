@@ -15,10 +15,10 @@ import java.nio.ByteOrder;
 public class RecipeClient {
     private static final String SERVER_IP = "10.0.2.2";
     private static final int SERVER_PORT = 8000;
+    private static RecipeClient clientInstance;
+
     private static String message;
-    
     private RecipeModel ingredientList = new RecipeModel();
-    private String basicMsg = "으로 만들수 있는 간단한 레시피";
 
     public void connectToServer() {try (Socket socket = new Socket(SERVER_IP, SERVER_PORT)) {
 
@@ -29,8 +29,7 @@ public class RecipeClient {
 
             message = ingredientList.getStrIngredientList();
 
-            if(message == null)
-            {
+            if(message == null){
                 message = "null";
             }
 
@@ -71,6 +70,15 @@ public class RecipeClient {
         } catch (Exception e){
             System.out.println("예외발생");
         }
+    }
+
+    public static RecipeClient getClientInstance()
+    {
+        if(clientInstance == null)
+        {
+            clientInstance = new RecipeClient();
+        }
+        return clientInstance;
     }
 
     private String getGptMessage()

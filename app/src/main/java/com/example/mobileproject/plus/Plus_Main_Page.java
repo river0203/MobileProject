@@ -13,15 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.MainActivity;
 import com.example.mobileproject.R;
+import com.example.mobileproject.RecipeClient;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Plus_Main_Page extends AppCompatActivity {
     private static final String TAG = "Plus_Main_Page";
+
     private List<Ingredient_Item_Init> ingredientItemList = new ArrayList<>();
     private Ingredient_Adapter ingredientAdapter;
     private Button btnRecipeBtn;
+    private RecipeClient recipeClient = new RecipeClient();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +42,8 @@ public class Plus_Main_Page extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //connect sever
+                //has error
+                recipeClient.connectToServer();
             }
         });
 
