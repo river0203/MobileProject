@@ -28,7 +28,7 @@ public class RecipeClient {
             //String message = "계란, 파, 간장으로 만들수 있는 간단한 레시피 한국어로 자세히 알려줘";
 
             message = ingredientList.getStrIngredientList();
-            message = message + basicMsg;
+            //message = message + basicMsg;
             byte[] data = message.getBytes();
 
             ByteBuffer b = ByteBuffer.allocate(4);
