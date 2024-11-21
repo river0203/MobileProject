@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mobileproject.MainActivity;
 import com.example.mobileproject.R;
 import com.example.mobileproject.RecipeClient;
+import com.example.mobileproject.RecipeModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ public class Plus_Main_Page extends AppCompatActivity {
     private Ingredient_Adapter ingredientAdapter;
     private Button btnRecipeBtn;
     private RecipeClient recipeClient = RecipeClient.getClientInstance();
+    private RecipeModel ingredientList = new RecipeModel();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
