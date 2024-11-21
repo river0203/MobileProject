@@ -7,7 +7,7 @@ public class RecipeModel {
     private static List<String> jsonRecipe = new ArrayList<>();
     private static String strIngredientList;
 
-    public void setPulsIngredients(String ingredient) {
+    public void plusIngredients(String ingredient) {
         this.ingredients.add(ingredient);
         strIngredientList = String.join(" ", ingredients);
     }
