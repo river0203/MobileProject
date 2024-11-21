@@ -18,10 +18,11 @@ public class RecipeModel {
         return strIngredientList;
     }
 
-    public static void setJsonRecipe(String recipe) {
+    public void setJsonRecipe(String recipe) {
         jsonRecipe.add(recipe);
+        System.out.println(jsonRecipe);
     }
-    public static List<String> getJsonRecipe() {
+    public List<String> getJsonRecipe() {
         return jsonRecipe;
     }
 
