@@ -1,6 +1,11 @@
 package com.example.mobileproject;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+
+import com.example.mobileproject.recommend.Recommend_Menu_Page;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.EOFException;
@@ -79,6 +84,12 @@ public class RecipeClient {
             clientInstance = new RecipeClient();
         }
         return clientInstance;
+    }
+    // Recommend_Menu_Page 서버에서 받은 거 이동 시키기
+    public void navigateToRecommendMenuPage(Context context) {
+        Intent intent = new Intent(context, Recommend_Menu_Page.class);
+        intent.putExtra("server_response", message);
+        context.startActivity(intent);
     }
 
 }

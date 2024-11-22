@@ -1,7 +1,6 @@
 package com.example.mobileproject.recommend;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mobileproject.MainActivity;
 import com.example.mobileproject.R;
 import com.example.mobileproject.SionActivity;
-import com.example.mobileproject.plus.Plus_Main_Page;
 
 import java.util.List;
 

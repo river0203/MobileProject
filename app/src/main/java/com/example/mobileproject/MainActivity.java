@@ -21,8 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button plusButton = findViewById(R.id.plus_page);
-
-
         plusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
