@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,35 +22,44 @@ public class SionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sion_main);
 
-        // Intent에서 데이터 가져오기
-        Intent intent = getIntent();
-        String menuName = intent.getStringExtra("menu_name");
-        String menuIngredients = intent.getStringExtra("menu_ingredients");
+        // Intent에서 JSON 데이터 가져오기
+//        Intent intent = getIntent();
+//        String jsonRecipe = intent.getStringExtra("recipe_json");
 
-        // 가져온 데이터를 로그로 확인하거나 UI에 표시
-        System.out.println("Menu Name: " + menuName);
-        System.out.println("Ingredients: " + menuIngredients);
+        // 테스트용 하드코딩
+        String jsonRecipe = "{\n" +
+                "    \"steps\": {\n" +
+                "        \"1\": \"양파와 닭가슴살을 적당한 크기로 잘라준다.\",\n" +
+                "        \"2\": \"팬에 기름을 두르고 양파를 볶는다.\",\n" +
+                "        \"3\": \"양파가 익으면 닭가슴살을 넣고 함께 볶는다.\",\n" +
+                "        \"4\": \"양념장을 넣고 볶아 익힌다.\",\n" +
+                "        \"5\": \"완성된 요리를 그릇에 담아 완성한다.\"\n" +
+                "    }\n" +
+                "}";
 
-        // JSON 데이터 (이 예제에서는 하드코딩. 실제로는 API 호출로 가져올 수 있음)
-        String jsonData = "{ \"recipeName\": \"Pasta\", \"steps\": [\"Boil water in a pot.\", \"Add pasta and cook for 10 minutes.\", \"Drain water and add sauce.\", \"Mix well and serve.\"] }";
-
-        recipeSteps = parseRecipeSteps(jsonData);
+        // JSON 데이터 파싱
+        recipeSteps = parseRecipeSteps(jsonRecipe);
 
         // ViewPager2 설정
         viewPager = findViewById(R.id.viewPager);
         adapter = new RecipePagerAdapter(this, recipeSteps);
         viewPager.setAdapter(adapter);
-
     }
 
     // JSON 데이터를 파싱하여 단계 리스트 반환
-    private List<String> parseRecipeSteps (String jsonData){
+    private List<String> parseRecipeSteps(String jsonData) {
         List<String> steps = new ArrayList<>();
         try {
+
             JSONObject jsonObject = new JSONObject(jsonData);
-            JSONArray stepsArray = jsonObject.getJSONArray("steps");
-            for (int i = 0; i < stepsArray.length(); i++) {
-                steps.add(stepsArray.getString(i));
+            JSONObject stepsObject = jsonObject.getJSONObject("steps");
+
+            // steps 객체에서 모든 단계 내용 추가
+            for (int i = 1; i <= stepsObject.length(); i++) {
+                String stepKey = String.valueOf(i);
+                if (stepsObject.has(stepKey)) {
+                    steps.add(stepsObject.getString(stepKey));
+                }
             }
         } catch (JSONException e) {
             e.printStackTrace();
