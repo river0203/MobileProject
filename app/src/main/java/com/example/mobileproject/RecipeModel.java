@@ -7,22 +7,28 @@ public class RecipeModel {
     private static List<String> jsonRecipe = new ArrayList<>();
     private static String strIngredientList;
 
-    public void setPulsIngredients(String ingredient) {
+    public void plusIngredients(String ingredient) {
         this.ingredients.add(ingredient);
         strIngredientList = String.join(" ", ingredients);
     }
     public List<String> getIngredients() {
         return this.ingredients;
     }
+
     public String getStrIngredientList() {
         return strIngredientList;
     }
 
-    public static void setJsonRecipe(String recipe) {
+    public void setJsonRecipe(String recipe) {
         jsonRecipe.add(recipe);
+        System.out.println(jsonRecipe);
     }
-    public static List<String> getJsonRecipe() {
+    public List<String> getJsonRecipe() {
         return jsonRecipe;
+    }
+
+    public void removeIngredients(List<String> ingredientsToRemove) {
+        this.ingredients.removeAll(ingredientsToRemove);
     }
 
 }
