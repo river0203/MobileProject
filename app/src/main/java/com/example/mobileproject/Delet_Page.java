@@ -1,17 +1,18 @@
 package com.example.mobileproject;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mobileproject.RecipeData.RecipeModel;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class NextActivity extends AppCompatActivity {
+public class Delet_Page extends AppCompatActivity {
     private RecyclerView recyclerView;
     private IngredientAdapter adapter;
     private List<String> selectedIngredients;

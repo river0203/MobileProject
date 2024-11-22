@@ -18,10 +18,11 @@ public class RecipePagerAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        // 각 단계 내용을 전달하여 Fragment 생성
+        // 각 단계 내용을 전달하여 stepFragment 생성
         return StepFragment.newInstance(steps.get(position));
     }
 
+    // 총 레시피 단계 수 반환
     @Override
     public int getItemCount() {
         return steps.size();

@@ -8,7 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mobileproject.R;
-import com.example.mobileproject.RecipeModel;
+import com.example.mobileproject.RecipeData.RecipeModel;
 
 
 public class Plus_Plus_Page extends AppCompatActivity {
@@ -49,7 +49,6 @@ public class Plus_Plus_Page extends AppCompatActivity {
             String name = nameInput.getText().toString();
             ingredentModel.plusIngredients(name);
             System.out.println(ingredentModel.getStrIngredientList());
-
 
             if (name.isEmpty() || quantity <= 0) {
                 Toast.makeText(Plus_Plus_Page.this, "이름과 수량을 다시 확인해 주세요", Toast.LENGTH_SHORT).show();

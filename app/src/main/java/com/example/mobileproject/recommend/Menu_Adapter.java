@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.R;
-import com.example.mobileproject.SionActivity;
+import com.example.mobileproject.Step_Page;
 
 import java.util.List;
 
@@ -22,6 +22,7 @@ public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.ViewHolder> 
         this.menuList = menuList;
     }
 
+    // RecyclerView.Adapter<Menu_Adapter.ViewHolder> 필수 함수들
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -36,16 +37,15 @@ public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.ViewHolder> 
         holder.nameTextView.setText(menu.getName());
         holder.ingredientsTextView.setText(String.join(", ", menu.getIngredients()));
 
+        //TODO : SionActivity에 요리과정을 넘겨야됨.
+
+        // ViewHoler클릭시 SionActivity로 넘어감
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 현재 컨텍스트에서 SionActivity로 이동
-                Intent intent = new Intent(v.getContext(), SionActivity.class);
-
-                // 선택된 메뉴 데이터를 전달
+                Intent intent = new Intent(v.getContext(), Step_Page.class);
                 intent.putExtra("menu_name", menu.getName());
                 intent.putExtra("menu_ingredients", String.join(", ", menu.getIngredients()));
-
                 v.getContext().startActivity(intent);
             }
         });
@@ -56,6 +56,7 @@ public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.ViewHolder> 
     public int getItemCount() {
         return menuList.size();
     }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView nameTextView, ingredientsTextView;

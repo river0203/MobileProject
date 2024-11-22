@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.MainActivity;
 import com.example.mobileproject.R;
-import com.example.mobileproject.RecipeClient;
-import com.example.mobileproject.RecipeModel;
+import com.example.mobileproject.RecipeData.RecipeClient;
+import com.example.mobileproject.RecipeData.RecipeModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class Plus_Main_Page extends AppCompatActivity {
     private static final String TAG = "Plus_Main_Page";
 
     private List<Ingredient_Item_Init> ingredientItemList = new ArrayList<>();
-    private Ingredient_Adapter ingredientAdapter;
+    private Plus_Main_Page_Adapter ingredientAdapter;
     private Button btnRecipeBtn;
     private RecipeClient recipeClient = RecipeClient.getClientInstance();
     private RecipeModel ingredientList = new RecipeModel();
@@ -33,13 +33,14 @@ public class Plus_Main_Page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plus_main_page);
 
-
+        // 리클라이너 어댑터에서 저장 바인드한 걸 여기서 띄우기
         RecyclerView recyclerView = findViewById(R.id.ingredient_listview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        ingredientAdapter = new Ingredient_Adapter(this, ingredientItemList);
+        ingredientAdapter = new Plus_Main_Page_Adapter(this, ingredientItemList);
         recyclerView.setAdapter(ingredientAdapter);
-        btnRecipeBtn = findViewById(R.id.recommend_button);
 
+       // 네트워크 실행,
+        btnRecipeBtn = findViewById(R.id.recommend_button);
         btnRecipeBtn.setOnClickListener(v -> {
             // 네트워크 작업을 백그라운드 스레드에서 실행
             new Thread(() -> {
@@ -49,7 +50,7 @@ public class Plus_Main_Page extends AppCompatActivity {
 
 
 
-
+        // plus_plus_page로 이동하면서 결과 가져오라고 하기
         Button plus_PlusButton = findViewById(R.id.plus_plus_page);
         plus_PlusButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +60,7 @@ public class Plus_Main_Page extends AppCompatActivity {
             }
         });
 
-
+        // MainActivity로 뒤로가기
         Button back_MainActivity = findViewById(R.id.back_mainActivity_button);
         back_MainActivity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,38 +70,26 @@ public class Plus_Main_Page extends AppCompatActivity {
                 finish();
             }
         });
-
-
-
-
-
-        Button recommendButton = findViewById(R.id.recommend_button);
     }
 
 
-
+    // plus_plus_page에서 반환된 데이터를 처리 후에 리스트에 추가하고 리싸클너뷰 업데이트
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Plus_Plus_Page에서 반환된 데이터 처리
         if (requestCode == 100 && resultCode == RESULT_OK) {
             String name = data.getStringExtra("name");
             int quantity = data.getIntExtra("quantity", 0);
 
-            // Log로 전달받은 데이터 확인
-            Log.d(TAG, "Received Data - Name: " + name + ", Quantity: " + quantity);
 
-            // ingredientItemList에 추가
             ingredientItemList.add(new Ingredient_Item_Init(name, quantity));
 
-            // 현재 리스트 상태를 Log로 출력
             Log.d(TAG, "Current ingredientItemList:");
             for (Ingredient_Item_Init item : ingredientItemList) {
                 Log.d(TAG, "Ingredient: " + item.getIngredint_name() + ", Quantity: " + item.getQuantity());
             }
 
-            // RecyclerView 갱신
             ingredientAdapter.notifyDataSetChanged();
         }
     }

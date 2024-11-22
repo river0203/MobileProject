@@ -14,7 +14,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SionActivity extends AppCompatActivity {
+public class Step_Page extends AppCompatActivity {
     private ViewPager2 viewPager;
     private RecipePagerAdapter adapter;
     private List<String> recipeSteps;
@@ -56,16 +56,16 @@ public class SionActivity extends AppCompatActivity {
 
                 // 마지막 단계인지 확인
                 if (position == recipeSteps.size() - 1) {
-                    nextButton.setVisibility(View.VISIBLE); // 버튼 표시
+                    nextButton.setVisibility(View.VISIBLE);
                 } else {
-                    nextButton.setVisibility(View.GONE); // 버튼 숨김
+                    nextButton.setVisibility(View.GONE);
                 }
             }
         });
 
-        // 버튼 클릭 시 다음 Activity로 이동
+        // NextActivity로 이동
         nextButton.setOnClickListener(v -> {
-            Intent intent = new Intent(SionActivity.this, NextActivity.class);
+            Intent intent = new Intent(Step_Page.this, Delet_Page.class);
             startActivity(intent);
         });
     }

@@ -14,7 +14,7 @@ import com.example.mobileproject.R;
 import java.util.List;
 
 
-public class Ingredient_Adapter extends RecyclerView.Adapter<Ingredient_Adapter.ViewHolder> {
+public class Plus_Main_Page_Adapter extends RecyclerView.Adapter<Plus_Main_Page_Adapter.ViewHolder> {
     private Context context;
     private List<Ingredient_Item_Init> ingredientItemList;
     private static List<String> ingredientList;
@@ -24,15 +24,17 @@ public class Ingredient_Adapter extends RecyclerView.Adapter<Ingredient_Adapter.
         this.ingredientList.add(ingredient);
         strIngredients = String.join(" ", ingredientList);
     }
+
     public List<String> getIngredients() {
         return this.ingredientList;
     }
+
     public String getStrIngredientList() {
         return strIngredients;
     }
 
 
-    public Ingredient_Adapter(Context context, List<Ingredient_Item_Init> ingredientItemList) {
+    public Plus_Main_Page_Adapter(Context context, List<Ingredient_Item_Init> ingredientItemList) {
         this.context = context;
         this.ingredientItemList = ingredientItemList;
     }
