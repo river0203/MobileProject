@@ -1,5 +1,6 @@
 package com.example.mobileproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +13,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class sionActivity extends AppCompatActivity {
+public class SionActivity extends AppCompatActivity {
     private ViewPager2 viewPager;
     private RecipePagerAdapter adapter;
     private List<String> recipeSteps;
@@ -21,6 +22,15 @@ public class sionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sion_main);
+
+        // Intent에서 데이터 가져오기
+        Intent intent = getIntent();
+        String menuName = intent.getStringExtra("menu_name");
+        String menuIngredients = intent.getStringExtra("menu_ingredients");
+
+        // 가져온 데이터를 로그로 확인하거나 UI에 표시
+        System.out.println("Menu Name: " + menuName);
+        System.out.println("Ingredients: " + menuIngredients);
 
         // JSON 데이터 (이 예제에서는 하드코딩. 실제로는 API 호출로 가져올 수 있음)
         String jsonData = "{ \"recipeName\": \"Pasta\", \"steps\": [\"Boil water in a pot.\", \"Add pasta and cook for 10 minutes.\", \"Drain water and add sauce.\", \"Mix well and serve.\"] }";

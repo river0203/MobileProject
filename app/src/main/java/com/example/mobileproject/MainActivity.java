@@ -12,6 +12,8 @@ import com.example.mobileproject.recommend.Recommend_Menu_Page;
 
 public class MainActivity extends AppCompatActivity {
 
+    private RecipeClient clientInstance = RecipeClient.getClientInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MainActivity.this, Recommend_Menu_Page.class);
                 startActivity(intent);
+
+                new Thread(() -> {
+                    clientInstance.connectToServer();
+                }).start();
 
             }
         });

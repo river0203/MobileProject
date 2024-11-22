@@ -13,14 +13,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobileproject.MainActivity;
 import com.example.mobileproject.R;
+import com.example.mobileproject.RecipeClient;
+import com.example.mobileproject.RecipeModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Plus_Main_Page extends AppCompatActivity {
     private static final String TAG = "Plus_Main_Page";
+
     private List<Ingredient_Item_Init> ingredientItemList = new ArrayList<>();
     private Ingredient_Adapter ingredientAdapter;
+    private Button btnRecipeBtn;
+    private RecipeClient recipeClient = RecipeClient.getClientInstance();
+    private RecipeModel ingredientList = new RecipeModel();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,6 +38,15 @@ public class Plus_Main_Page extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         ingredientAdapter = new Ingredient_Adapter(this, ingredientItemList);
         recyclerView.setAdapter(ingredientAdapter);
+        btnRecipeBtn = findViewById(R.id.recommend_button);
+
+        btnRecipeBtn.setOnClickListener(v -> {
+            // 네트워크 작업을 백그라운드 스레드에서 실행
+            new Thread(() -> {
+                 recipeClient.connectToServer();
+            }).start();
+        });
+
 
 
 
