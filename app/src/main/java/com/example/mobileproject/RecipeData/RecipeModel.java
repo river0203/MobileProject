@@ -29,6 +29,7 @@ public class RecipeModel {
         System.out.println(jsonRecipe);
     }
 
+    // 리스트 변환이 두번 됨
     // JSON형식의 데이터 리스트를 Recommend_Menu_page에 전달
     public List<String> getJsonRecipe() {return jsonRecipe;
     }

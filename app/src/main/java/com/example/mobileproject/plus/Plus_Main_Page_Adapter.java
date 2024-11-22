@@ -17,29 +17,11 @@ import java.util.List;
 public class Plus_Main_Page_Adapter extends RecyclerView.Adapter<Plus_Main_Page_Adapter.ViewHolder> {
     private Context context;
     private List<Ingredient_Item_Init> ingredientItemList;
-    private static List<String> ingredientList;
-    private static String strIngredients;
-
-    public void plusIngredients(String ingredient) {
-        this.ingredientList.add(ingredient);
-        strIngredients = String.join(" ", ingredientList);
-    }
-
-    public List<String> getIngredients() {
-        return this.ingredientList;
-    }
-
-    public String getStrIngredientList() {
-        return strIngredients;
-    }
-
 
     public Plus_Main_Page_Adapter(Context context, List<Ingredient_Item_Init> ingredientItemList) {
         this.context = context;
         this.ingredientItemList = ingredientItemList;
     }
-
-
 
     @NonNull
     @Override

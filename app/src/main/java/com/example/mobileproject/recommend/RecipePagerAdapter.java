@@ -1,4 +1,4 @@
-package com.example.mobileproject;
+package com.example.mobileproject.recommend;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -24,7 +24,5 @@ public class RecipePagerAdapter extends FragmentStateAdapter {
 
     // 총 레시피 단계 수 반환
     @Override
-    public int getItemCount() {
-        return steps.size();
-    }
+    public int getItemCount() {return steps.size();}
 }

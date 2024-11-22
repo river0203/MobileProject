@@ -5,10 +5,12 @@ import java.util.List;
 public class Menu_Init {
     private String name;
     private List<String> ingredients;
+    private List<String> steps;
 
-    public Menu_Init(String name, List<String> ingredients) {
+    public Menu_Init(String name, List<String> ingredients, List<String> steps) {
         this.name = name;
         this.ingredients = ingredients;
+        this.steps = steps;
     }
 
     public String getName() {
@@ -17,5 +19,9 @@ public class Menu_Init {
 
     public List<String> getIngredients() {
         return ingredients;
+    }
+
+    public List<String> getSteps() {
+        return steps;
     }
 }

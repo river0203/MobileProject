@@ -1,4 +1,4 @@
-package com.example.mobileproject;
+package com.example.mobileproject.recommend;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mobileproject.R;
 import com.example.mobileproject.RecipeData.RecipeModel;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class Delet_Page extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private IngredientAdapter adapter;
+    private Delet_Page_Adapter adapter;
     private List<String> selectedIngredients;
 
     @Override
@@ -32,7 +33,7 @@ public class Delet_Page extends AppCompatActivity {
         // RecyclerView 설정
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new IngredientAdapter(ingredients, selectedIngredients);
+        adapter = new Delet_Page_Adapter(ingredients, selectedIngredients);
         recyclerView.setAdapter(adapter);
 
         // 완료 버튼 클릭 이벤트

@@ -1,4 +1,4 @@
-package com.example.mobileproject;
+package com.example.mobileproject.recommend;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +9,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mobileproject.R;
+
 import java.util.List;
 
-public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.ViewHolder> {
+public class Delet_Page_Adapter extends RecyclerView.Adapter<Delet_Page_Adapter.ViewHolder> {
     private final List<String> ingredients;
     private final List<String> selectedIngredients;
 
-    public IngredientAdapter(List<String> ingredients, List<String> selectedIngredients) {
+    public Delet_Page_Adapter(List<String> ingredients, List<String> selectedIngredients) {
         this.ingredients = ingredients;
         this.selectedIngredients = selectedIngredients;
     }

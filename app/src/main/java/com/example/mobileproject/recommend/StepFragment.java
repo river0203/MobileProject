@@ -1,4 +1,4 @@
-package com.example.mobileproject;
+package com.example.mobileproject.recommend;
 
 import android.os.Bundle;
 
@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.mobileproject.R;
 
 public class StepFragment extends Fragment {
     private static final String ARG_STEP = "step";
