@@ -14,6 +14,7 @@ public class RecipeModel {
     public List<String> getIngredients() {
         return this.ingredients;
     }
+
     public String getStrIngredientList() {
         return strIngredientList;
     }
@@ -24,6 +25,10 @@ public class RecipeModel {
     }
     public List<String> getJsonRecipe() {
         return jsonRecipe;
+    }
+
+    public void removeIngredients(List<String> ingredientsToRemove) {
+        this.ingredients.removeAll(ingredientsToRemove);
     }
 
 }
