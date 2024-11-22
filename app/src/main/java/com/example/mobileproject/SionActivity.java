@@ -2,6 +2,8 @@ package com.example.mobileproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
@@ -16,17 +18,14 @@ public class SionActivity extends AppCompatActivity {
     private ViewPager2 viewPager;
     private RecipePagerAdapter adapter;
     private List<String> recipeSteps;
+    private Button nextButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sion_main);
 
-        // Intent에서 JSON 데이터 가져오기
-//        Intent intent = getIntent();
-//        String jsonRecipe = intent.getStringExtra("recipe_json");
-
-        // 테스트용 하드코딩
+        // RecipeModel에서 JSON 데이터 가져오기 (하드코딩된 JSON 데이터)
         String jsonRecipe = "{\n" +
                 "    \"steps\": {\n" +
                 "        \"1\": \"양파와 닭가슴살을 적당한 크기로 잘라준다.\",\n" +
@@ -44,17 +43,40 @@ public class SionActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPager);
         adapter = new RecipePagerAdapter(this, recipeSteps);
         viewPager.setAdapter(adapter);
+
+        // 다음 Activity로 이동하는 버튼
+        nextButton = findViewById(R.id.nextButton);
+        nextButton.setVisibility(View.GONE); // 처음에는 숨김
+
+        // ViewPager2 페이지 변경 리스너 추가
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+
+                // 마지막 단계인지 확인
+                if (position == recipeSteps.size() - 1) {
+                    nextButton.setVisibility(View.VISIBLE); // 버튼 표시
+                } else {
+                    nextButton.setVisibility(View.GONE); // 버튼 숨김
+                }
+            }
+        });
+
+        // 버튼 클릭 시 다음 Activity로 이동
+        nextButton.setOnClickListener(v -> {
+            Intent intent = new Intent(SionActivity.this, NextActivity.class);
+            startActivity(intent);
+        });
     }
 
     // JSON 데이터를 파싱하여 단계 리스트 반환
     private List<String> parseRecipeSteps(String jsonData) {
         List<String> steps = new ArrayList<>();
         try {
-
             JSONObject jsonObject = new JSONObject(jsonData);
             JSONObject stepsObject = jsonObject.getJSONObject("steps");
 
-            // steps 객체에서 모든 단계 내용 추가
             for (int i = 1; i <= stepsObject.length(); i++) {
                 String stepKey = String.valueOf(i);
                 if (stepsObject.has(stepKey)) {
