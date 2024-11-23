@@ -16,6 +16,8 @@ public class RecipePagerAdapter extends FragmentStateAdapter {
         this.steps = steps;
     }
 
+    // ViewPager2에 레시피 단계 데이터를 연결해서 StepFragment를 생성.
+    // 이렇게 동적으로 단계를 보여준다.
     @NonNull
     @Override
     public Fragment createFragment(int position) {
