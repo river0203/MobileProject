@@ -70,22 +70,24 @@ public class Recommend_Menu_Page extends AppCompatActivity {
 
 
         // RecipeModel에서 JSON 데이터 가져오기
-        List<String> jsonRecipeList = recipeModel.getJsonRecipe();
+        String jsonRecipeList = recipeModel.getJsonRecipe();
         if (jsonRecipeList.isEmpty()) {
             Toast.makeText(this, "서버 데이터를 불러올 수 없습니다.", Toast.LENGTH_SHORT).show();
             return;
         }
 
         // JSON 데이터를 합쳐서 하나의 문자열로 처리
-        StringBuilder jsonDataBuilder = new StringBuilder();
+        /*StringBuilder jsonDataBuilder = new StringBuilder();
         for (String json : jsonRecipeList) {
             jsonDataBuilder.append(json);
         }
         String jsonData = jsonDataBuilder.toString();
 
+         */
+
         // JSON 데이터를 파싱하기 위해서 ParseJson으로 보내기
-        if (jsonData != null && !jsonData.isEmpty()) {
-            List<Menu_Init> menuList = ParseJson.parseJsonData(jsonData);
+        if (jsonRecipeList != null && !jsonRecipeList.isEmpty()) {
+            List<Menu_Init> menuList = ParseJson.parseJsonData(jsonRecipeList);
 
             // 리클라이너뷰 업데이트
             Menu_Adapter adapter = new Menu_Adapter(menuList);
