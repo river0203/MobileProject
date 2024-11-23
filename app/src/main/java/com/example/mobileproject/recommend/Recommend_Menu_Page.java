@@ -27,7 +27,7 @@ public class Recommend_Menu_Page extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this,1));
 
         // 하드코딩 용 테스트
-        List<String> jsonRecipeList = new ArrayList<>();
+        /*List<String> jsonRecipeList = new ArrayList<>();
         String jsonString = "{\n" +
                 "    \"recipes\": [\n" +
                 "        {\n" +
@@ -65,16 +65,16 @@ public class Recommend_Menu_Page extends AppCompatActivity {
                 "        }\n" +
                 "    ]\n" +
                 "}";
-        jsonRecipeList.add(jsonString);
+        jsonRecipeList.add(jsonString);*/
 
 
 
         // RecipeModel에서 JSON 데이터 가져오기
-//        List<String> jsonRecipeList = recipeModel.getJsonRecipe();
-//        if (jsonRecipeList.isEmpty()) {
-//            Toast.makeText(this, "서버 데이터를 불러올 수 없습니다.", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
+        List<String> jsonRecipeList = recipeModel.getJsonRecipe();
+        if (jsonRecipeList.isEmpty()) {
+            Toast.makeText(this, "서버 데이터를 불러올 수 없습니다.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         // JSON 데이터를 합쳐서 하나의 문자열로 처리
         StringBuilder jsonDataBuilder = new StringBuilder();
