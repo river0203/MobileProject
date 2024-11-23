@@ -65,7 +65,7 @@ public class Recommend_Menu_Page extends AppCompatActivity {
                 "        }\n" +
                 "    ]\n" +
                 "}";
-        jsonRecipeList.add(jsonString); // JSON 데이터를 리스트에 추가
+        jsonRecipeList.add(jsonString);
 
 
 

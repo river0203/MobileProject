@@ -22,6 +22,7 @@ public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.ViewHolder> 
         this.menuList = menuList;
     }
 
+    // 필수 함수
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -37,6 +38,7 @@ public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.ViewHolder> 
         holder.nameTextView.setText(menu.getName());
         holder.ingredientsTextView.setText(String.join(", ", menu.getIngredients()));
 
+        // 뷰 바인더를 클릭하면 이름과 step을 보내줌(이름은 settitle때문에 못 지우겠음)
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

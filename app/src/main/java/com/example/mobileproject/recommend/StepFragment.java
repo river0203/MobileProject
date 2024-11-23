@@ -16,6 +16,7 @@ import com.example.mobileproject.R;
 public class StepFragment extends Fragment {
     private static final String ARG_STEP = "step";
 
+    // 전달받은 단계 데이터를 Fragment 인스턴스로 생성
     public static StepFragment newInstance(String step) {
         StepFragment fragment = new StepFragment();
         Bundle args = new Bundle();
@@ -24,6 +25,7 @@ public class StepFragment extends Fragment {
         return fragment;
     }
 
+    // 단계 데이터를 UI에 표시
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

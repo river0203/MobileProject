@@ -10,6 +10,7 @@ import java.util.List;
 public class RecipePagerAdapter extends FragmentStateAdapter {
     private final List<String> steps;
 
+    // 단계별 데이터 steps를 Step_Page에 전달
     public RecipePagerAdapter(@NonNull FragmentActivity fragmentActivity, List<String> steps) {
         super(fragmentActivity);
         this.steps = steps;

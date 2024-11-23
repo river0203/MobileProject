@@ -27,22 +27,21 @@ public class Delet_Page extends AppCompatActivity {
         RecipeModel recipeModel = new RecipeModel();
         List<String> ingredients = recipeModel.getIngredients();
 
-        // 선택된 재료 초기화
+        // 리클라이너 뷰에 표시
         selectedIngredients = new ArrayList<>();
-
-        // RecyclerView 설정
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new Delet_Page_Adapter(ingredients, selectedIngredients);
         recyclerView.setAdapter(adapter);
 
-        // 완료 버튼 클릭 이벤트
+
+        // RecipeModel에서 선택된 재료 삭제
         Button completeButton = findViewById(R.id.completeButton);
         completeButton.setOnClickListener(v -> {
-            // RecipeModel에서 선택된 재료 삭제
+
             recipeModel.removeIngredients(selectedIngredients);
             System.out.println("Updated ingredients: " + recipeModel.getIngredients());
-            finish(); // Activity 종료
+            finish();
         });
     }
 }

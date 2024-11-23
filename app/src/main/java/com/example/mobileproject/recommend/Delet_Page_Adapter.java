@@ -22,6 +22,7 @@ public class Delet_Page_Adapter extends RecyclerView.Adapter<Delet_Page_Adapter.
         this.selectedIngredients = selectedIngredients;
     }
 
+    // 필수 함수
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,7 +36,7 @@ public class Delet_Page_Adapter extends RecyclerView.Adapter<Delet_Page_Adapter.
         String ingredient = ingredients.get(position);
         holder.ingredientName.setText(ingredient);
 
-        // 체크박스 선택 이벤트
+        // 체크박스 선택 (Click == 1) ? "삭제" : "생존"
         holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 selectedIngredients.add(ingredient);

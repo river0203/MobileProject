@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
     android:padding="8dp"
     android:layout_margin="8dp"
     android:background="@drawable/item_shape"
-    android:elevation="10dp">
+    android:elevation="10dp"
+    android:weightSum="1">
 
     <TextView
+        android:layout_gravity="center_vertical"
         android:id="@+id/nameTextView"
         android:text="여기에 이름"
         android:layout_width="wrap_content"
@@ -17,10 +19,17 @@
         android:textStyle="bold"
         android:paddingBottom="4dp" />
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.7"/>
+
     <TextView
+        android:layout_gravity="center_vertical"
         android:id="@+id/ingredientsTextView"
-        android:text="여기에 재료"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/cardview_default_radius"
+        android:text="여기에 재료"
         android:textSize="14sp" />
 </LinearLayout>
