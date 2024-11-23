@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mobileproject.RecipeData.RecipeClient;
 import com.example.mobileproject.plus.Plus_Main_Page;
 import com.example.mobileproject.recommend.Recommend_Menu_Page;
 
@@ -21,8 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button plusButton = findViewById(R.id.plus_page);
-
-
         plusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

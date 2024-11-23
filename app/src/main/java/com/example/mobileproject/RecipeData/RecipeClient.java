@@ -1,6 +1,11 @@
-package com.example.mobileproject;
+package com.example.mobileproject.RecipeData;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+
+import com.example.mobileproject.recommend.Recommend_Menu_Page;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.EOFException;
@@ -36,31 +41,24 @@ public class RecipeClient {
             byte[] data = message.getBytes();
 
             ByteBuffer b = ByteBuffer.allocate(4);
-            // byte포멧은 little 엔디언이다.
-            b.order(ByteOrder.LITTLE_ENDIAN);
-            b.putInt(data.length);
-            // 데이터 길이 전송
-            out.write(b.array(), 0, 4);
-            // 데이터 전송
+            b.order(ByteOrder.LITTLE_ENDIAN);// byte포멧은 little 엔디언이다.
+            b.putInt(data.length);// 데이터 길이 전송
+            out.write(b.array(), 0, 4);// 데이터 전송
             out.write(data);
 
             data = new byte[4];
-            // 데이터 길이를 받는다.
-            in.read(data, 0, 4);
-            // ByteBuffer를 통해 little 엔디언 형식으로 데이터 길이를 구한다.
-            b = ByteBuffer.wrap(data);
+            in.read(data, 0, 4);// 데이터 길이를 받는다.
+            b = ByteBuffer.wrap(data);// ByteBuffer를 통해 little 엔디언 형식으로 데이터 길이를 구한다.
             b.order(ByteOrder.LITTLE_ENDIAN);
             int length = b.getInt();
-            // 데이터를 받을 버퍼를 선언한다.
-            data = new byte[length];
-            // 데이터를 받는다.
-            in.read(data, 0, length);
+            data = new byte[length];// 데이터를 받을 버퍼를 선언한다.
+            in.read(data, 0, length);// 데이터를 받는다.
 
             // byte형식의 데이터를 string형식으로 변환한다.
             message = new String(data, "UTF-8");
             ingredientModel.setJsonRecipe(message);
-            // 콘솔에 출력한다.
             System.out.println(message);
+
 
         } catch (SocketTimeoutException e) {
             Log.e("Socket Error", "Connection timed out", e);
@@ -73,6 +71,7 @@ public class RecipeClient {
         }
     }
 
+    // 싱글톤 패턴
     public static RecipeClient getClientInstance()
     {
         if(clientInstance == null)
@@ -80,6 +79,12 @@ public class RecipeClient {
             clientInstance = new RecipeClient();
         }
         return clientInstance;
+    }
+    // Recommend_Menu_Page 서버에서 받은 거 이동 시키기
+    public void navigateToRecommendMenuPage(Context context) {
+        Intent intent = new Intent(context, Recommend_Menu_Page.class);
+        intent.putExtra("server_response", message);
+        context.startActivity(intent);
     }
 
 }

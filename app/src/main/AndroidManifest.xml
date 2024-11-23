@@ -16,8 +16,8 @@
         android:theme="@style/Theme.MobileProject"
         tools:targetApi="31">
         <activity
-            android:name=".NextActivity"
-            android:exported="false" />
+            android:name=".recommend.Delet_Page"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -37,7 +37,7 @@
             android:name=".recommend.Recommend_Menu_Page"
             android:exported="true" />
         <activity
-            android:name=".SionActivity"
+            android:name=".recommend.Step_Page"
             android:exported="true" />
     </application>
 

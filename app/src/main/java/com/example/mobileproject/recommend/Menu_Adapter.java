@@ -1,7 +1,6 @@
 package com.example.mobileproject.recommend;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mobileproject.MainActivity;
 import com.example.mobileproject.R;
-import com.example.mobileproject.SionActivity;
-import com.example.mobileproject.plus.Plus_Main_Page;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.ViewHolder> {
@@ -25,6 +22,7 @@ public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.ViewHolder> 
         this.menuList = menuList;
     }
 
+    // 필수 함수
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -36,24 +34,21 @@ public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Menu_Init menu = menuList.get(position);
+
         holder.nameTextView.setText(menu.getName());
         holder.ingredientsTextView.setText(String.join(", ", menu.getIngredients()));
 
+        // 뷰 바인더를 클릭하면 이름과 step을 보내줌(이름은 settitle때문에 못 지우겠음)
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 현재 컨텍스트에서 SionActivity로 이동
-                Intent intent = new Intent(v.getContext(), SionActivity.class);
-
-                // 선택된 메뉴 데이터를 전달
+                Intent intent = new Intent(v.getContext(), Step_Page.class);
                 intent.putExtra("menu_name", menu.getName());
-                intent.putExtra("menu_ingredients", String.join(", ", menu.getIngredients()));
-
+                intent.putStringArrayListExtra("menu_steps", new ArrayList<>(menu.getSteps()));
                 v.getContext().startActivity(intent);
             }
         });
     }
-
 
     @Override
     public int getItemCount() {

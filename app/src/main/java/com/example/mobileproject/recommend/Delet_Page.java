@@ -1,19 +1,21 @@
-package com.example.mobileproject;
+package com.example.mobileproject.recommend;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mobileproject.R;
+import com.example.mobileproject.RecipeData.RecipeModel;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class NextActivity extends AppCompatActivity {
+public class Delet_Page extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private IngredientAdapter adapter;
+    private Delet_Page_Adapter adapter;
     private List<String> selectedIngredients;
 
     @Override
@@ -25,22 +27,21 @@ public class NextActivity extends AppCompatActivity {
         RecipeModel recipeModel = new RecipeModel();
         List<String> ingredients = recipeModel.getIngredients();
 
-        // 선택된 재료 초기화
+        // 리클라이너 뷰에 표시
         selectedIngredients = new ArrayList<>();
-
-        // RecyclerView 설정
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new IngredientAdapter(ingredients, selectedIngredients);
+        adapter = new Delet_Page_Adapter(ingredients, selectedIngredients);
         recyclerView.setAdapter(adapter);
 
-        // 완료 버튼 클릭 이벤트
+
+        // RecipeModel에서 선택된 재료 삭제
         Button completeButton = findViewById(R.id.completeButton);
         completeButton.setOnClickListener(v -> {
-            // RecipeModel에서 선택된 재료 삭제
+
             recipeModel.removeIngredients(selectedIngredients);
             System.out.println("Updated ingredients: " + recipeModel.getIngredients());
-            finish(); // Activity 종료
+            finish();
         });
     }
 }
