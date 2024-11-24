@@ -7,6 +7,17 @@ public class RecipeModel {
     private static String jsonRecipe;
     private static String strIngredientList;
 
+    // 여러 액티비에서 동일한 인스턴스를 사용하기 위한 싱글톤 패턴.
+    private static RecipeModel instance;
+    private RecipeModel() {}
+    public static RecipeModel getInstance() {
+        if (instance == null) {
+            instance = new RecipeModel();
+        }
+        return instance;
+    }
+    // 여기까지가 싱글톤 패턴
+
     //  Plus_Plus_Page에서 재료이름을 받음
     public void plusIngredients(String ingredient) {
         this.ingredients.add(ingredient);

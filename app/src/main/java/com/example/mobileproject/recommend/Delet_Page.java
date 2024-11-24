@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mobileproject.MainActivity;
 import com.example.mobileproject.R;
+import com.example.mobileproject.MainActivity;
 import com.example.mobileproject.RecipeData.RecipeModel;
 
 import java.util.ArrayList;
@@ -25,10 +25,15 @@ public class Delet_Page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_next);
 
-        // 하드코딩된 재료 리스트
-        List<String> ingredients = new ArrayList<>();
-        ingredients.add("egg");
-        ingredients.add("ham");
+        // RecipeModel 인스턴스 생성 및 재료 리스트 가져오기
+        RecipeModel recipeModel = new RecipeModel();
+        List<String> ingredients = recipeModel.getIngredients();
+
+        // 재료 리스트가 비어있을 경우 대비
+        if (ingredients == null || ingredients.isEmpty()) {
+            ingredients = new ArrayList<>();
+            ingredients.add("No ingredients available"); // 디폴트 메시지
+        }
 
         // 리클라이너 뷰에 표시
         selectedIngredients = new ArrayList<>();
@@ -41,13 +46,13 @@ public class Delet_Page extends AppCompatActivity {
         Button completeButton = findViewById(R.id.completeButton);
         completeButton.setOnClickListener(v -> {
             // 선택된 재료 출력
-            System.out.println("선택된 재료: " + selectedIngredients);
+            System.out.println("삭제될 재료들: " + selectedIngredients);
 
-            // 리스트에서 선택된 재료 제거
-            ingredients.removeAll(selectedIngredients);
-            adapter.notifyDataSetChanged();
+            // RecipeModel에서 선택된 재료 제거
+            recipeModel.removeIngredients(selectedIngredients);
 
-            // MainActivity로 돌아가기
+            // 결과 확인 후 MainActivity로 돌아가기
+            System.out.println("모델에 들어있는 재료들: " + recipeModel.getIngredients());
             Intent intent = new Intent(Delet_Page.this, MainActivity.class);
             startActivity(intent);
             finish();
