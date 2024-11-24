@@ -80,11 +80,5 @@ public class RecipeClient {
         }
         return clientInstance;
     }
-    // Recommend_Menu_Page 서버에서 받은 거 이동 시키기
-    public void navigateToRecommendMenuPage(Context context) {
-        Intent intent = new Intent(context, Recommend_Menu_Page.class);
-        intent.putExtra("server_response", message);
-        context.startActivity(intent);
-    }
 
 }
