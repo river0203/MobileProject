@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Recommend_Menu_Page extends AppCompatActivity {
-    private RecipeModel recipeModel = new RecipeModel();
+    private RecipeModel recipeModel = RecipeModel.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

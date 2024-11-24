@@ -26,7 +26,7 @@ public class Plus_Main_Page extends AppCompatActivity {
     private Plus_Main_Page_Adapter ingredientAdapter;
     private Button btnRecipeBtn;
     private RecipeClient recipeClient = RecipeClient.getClientInstance();
-    private RecipeModel ingredientList = new RecipeModel();
+    private RecipeModel recipeModel = RecipeModel.getInstance();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

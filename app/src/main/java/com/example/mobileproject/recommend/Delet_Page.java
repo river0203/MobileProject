@@ -26,7 +26,7 @@ public class Delet_Page extends AppCompatActivity {
         setContentView(R.layout.activity_next);
 
         // RecipeModel 인스턴스 생성 및 재료 리스트 가져오기
-        RecipeModel recipeModel = new RecipeModel();
+        RecipeModel recipeModel = RecipeModel.getInstance();
         List<String> ingredients = recipeModel.getIngredients();
 
         // 재료 리스트가 비어있을 경우 대비

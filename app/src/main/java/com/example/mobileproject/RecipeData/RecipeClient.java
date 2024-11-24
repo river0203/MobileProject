@@ -23,7 +23,7 @@ public class RecipeClient {
     private static RecipeClient clientInstance;
 
     private static String message;
-    private RecipeModel ingredientModel = new RecipeModel();
+    private RecipeModel recipeModel = RecipeModel.getInstance();
 
     public void connectToServer() {try (Socket socket = new Socket(SERVER_IP, SERVER_PORT)) {
 
@@ -32,7 +32,7 @@ public class RecipeClient {
 
             //String message = "계란, 파, 간장으로 만들수 있는 간단한 레시피 한국어로 자세히 알려줘";
 
-            message = ingredientModel.getStrIngredientList();
+            message = recipeModel.getStrIngredientList();
 
             if(message == null){
                 message = "null";
@@ -56,7 +56,7 @@ public class RecipeClient {
 
             // byte형식의 데이터를 string형식으로 변환한다.
             message = new String(data, "UTF-8");
-            ingredientModel.setJsonRecipe(message);
+        recipeModel.setJsonRecipe(message);
             System.out.println(message);
 
 
