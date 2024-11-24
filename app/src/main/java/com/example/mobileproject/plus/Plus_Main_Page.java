@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.example.mobileproject.MainActivity;
 import com.example.mobileproject.R;
 import com.example.mobileproject.RecipeData.RecipeClient;
 import com.example.mobileproject.RecipeData.RecipeModel;
+import com.example.mobileproject.recommend.Recommend_Menu_Page;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,12 +44,31 @@ public class Plus_Main_Page extends AppCompatActivity {
        // 네트워크 실행,
         btnRecipeBtn = findViewById(R.id.recommend_button);
         btnRecipeBtn.setOnClickListener(v -> {
-            // 네트워크 작업을 백그라운드 스레드에서 실행
+            // 재료 리스트 확인
+            if (recipeModel.getIngredients() == null || recipeModel.getIngredients().isEmpty()) {
+                Toast.makeText(Plus_Main_Page.this, "재료를 추가하세요.", Toast.LENGTH_SHORT).show();
+                Log.w(TAG, "재료 리스트가 비어 있습니다.");
+                return;
+            }
+            // 네트워크 작업 실행
             new Thread(() -> {
-                 recipeClient.connectToServer();
+                try {
+                    // 서버와 연결
+                    recipeClient.connectToServer();
+
+                    // 연결 성공 시 Recommend_Menu_Page로 이동
+                    runOnUiThread(() -> {
+                        Intent intent = new Intent(Plus_Main_Page.this, Recommend_Menu_Page.class);
+                        startActivity(intent);
+                    });
+                } catch (Exception e) {
+                    Log.e(TAG, "서버 연결 중 오류 발생", e);
+
+                    runOnUiThread(() ->
+                            Toast.makeText(Plus_Main_Page.this, "서버 연결 중 오류가 발생했습니다.", Toast.LENGTH_SHORT).show()
+                    );
+                }
             }).start();
-
-
         });
 
 
