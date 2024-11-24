@@ -22,11 +22,17 @@ public class RecipeModel {
     public void plusIngredients(String ingredient) {
         this.ingredients.add(ingredient);
         strIngredientList = String.join(" ", ingredients);
+        System.out.println(strIngredientList);
     }
 
     // 재료 리스트를 보냄 -> NextActivity
     public List<String> getIngredients() {
         return this.ingredients;
+//        ArrayList<String> strings = new ArrayList<>();
+//        strings.add("ham");
+//        strings.add("eggs");
+//        strings.add("rice");
+//        return strings;
     }
 
     // RecipeClient에 재료를 보냄
@@ -49,5 +55,4 @@ public class RecipeModel {
     public void removeIngredients(List<String> ingredientsToRemove) {
         this.ingredients.removeAll(ingredientsToRemove);
     }
-
 }
