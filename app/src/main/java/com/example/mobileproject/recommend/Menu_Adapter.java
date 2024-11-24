@@ -36,7 +36,7 @@ public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.ViewHolder> 
         Menu_Init menu = menuList.get(position);
 
         holder.nameTextView.setText(menu.getName());
-        holder.ingredientsTextView.setText(String.join(", ", menu.getIngredients()));
+//        holder.ingredientsTextView.setText(String.join(", ", menu.getIngredients()));
 
         // 뷰 바인더를 클릭하면 이름과 step을 보내줌(이름은 settitle때문에 못 지우겠음)
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +61,7 @@ public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.ViewHolder> 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.nameTextView);
-            ingredientsTextView = itemView.findViewById(R.id.ingredientsTextView);
+//            ingredientsTextView = itemView.findViewById(R.id.ingredientsTextView);
         }
     }
 }

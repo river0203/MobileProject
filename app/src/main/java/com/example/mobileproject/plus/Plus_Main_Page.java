@@ -45,11 +45,11 @@ public class Plus_Main_Page extends AppCompatActivity {
         btnRecipeBtn = findViewById(R.id.recommend_button);
         btnRecipeBtn.setOnClickListener(v -> {
             // 재료 리스트 확인
-            if (recipeModel.getIngredients() == null || recipeModel.getIngredients().isEmpty()) {
-                Toast.makeText(Plus_Main_Page.this, "재료를 추가하세요.", Toast.LENGTH_SHORT).show();
-                Log.w(TAG, "재료 리스트가 비어 있습니다.");
-                return;
-            }
+//            if (recipeModel.getIngredients() == null || recipeModel.getIngredients().isEmpty()) {
+//                Toast.makeText(Plus_Main_Page.this, "재료를 추가하세요.", Toast.LENGTH_SHORT).show();
+//                Log.w(TAG, "재료 리스트가 비어 있습니다.");
+//                return;
+//            }
             // 네트워크 작업 실행
             new Thread(() -> {
                 try {

@@ -49,7 +49,6 @@ public class RecipeModel {
     // 리스트 변환이 두번 됨
     // JSON형식의 데이터 리스트를 Recommend_Menu_page에 전달
     public String getJsonRecipe() {
-
           return jsonRecipe;
     }
 
