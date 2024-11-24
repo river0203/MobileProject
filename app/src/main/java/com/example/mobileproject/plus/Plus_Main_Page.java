@@ -46,6 +46,8 @@ public class Plus_Main_Page extends AppCompatActivity {
             new Thread(() -> {
                  recipeClient.connectToServer();
             }).start();
+
+
         });
 
 
