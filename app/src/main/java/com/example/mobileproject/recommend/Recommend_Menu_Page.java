@@ -1,12 +1,16 @@
 package com.example.mobileproject.recommend;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mobileproject.MainActivity;
 import com.example.mobileproject.R;
 import com.example.mobileproject.RecipeData.ParseJson;
 import com.example.mobileproject.RecipeData.RecipeModel;
@@ -21,6 +25,17 @@ public class Recommend_Menu_Page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recommend_menu_page);
+
+        // 메인화면 뒤로가기 버튼 추가
+        Button backMainActivity = findViewById(R.id.back_mainActivity_button);
+        backMainActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent backIntent = new Intent(Recommend_Menu_Page.this, MainActivity.class);
+                startActivity(backIntent);
+                finish();
+            }
+        });
 
         // 리클라너뷰 설정
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
@@ -75,15 +90,6 @@ public class Recommend_Menu_Page extends AppCompatActivity {
             Toast.makeText(this, "서버 데이터를 불러올 수 없습니다.", Toast.LENGTH_SHORT).show();
             return;
         }
-
-        // JSON 데이터를 합쳐서 하나의 문자열로 처리
-        /*StringBuilder jsonDataBuilder = new StringBuilder();
-        for (String json : jsonRecipeList) {
-            jsonDataBuilder.append(json);
-        }
-        String jsonData = jsonDataBuilder.toString();
-
-         */
 
         // JSON 데이터를 파싱하기 위해서 ParseJson으로 보내기
         if (jsonRecipeList != null && !jsonRecipeList.isEmpty()) {

@@ -2,8 +2,10 @@ package com.example.mobileproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -35,15 +37,24 @@ public class MainActivity extends AppCompatActivity {
         recommendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                try {
+                    Intent intent = new Intent(MainActivity.this, Recommend_Menu_Page.class);
+                    startActivity(intent);
 
-                Intent intent = new Intent(MainActivity.this, Recommend_Menu_Page.class);
-                startActivity(intent);
+                    new Thread(() -> {
+                        try {
+                            clientInstance.connectToServer();
+                        } catch (Exception e) {
+                            Log.e("MainActivity", "Server Error", e);
+                        }
+                    }).start();
 
-                new Thread(() -> {
-                    clientInstance.connectToServer();
-                }).start();
-
+                } catch (Exception e) {
+                    Log.e("MainActivity", "Error", e);
+                    Toast.makeText(MainActivity.this, "페이지 이동 중 오류가 발생했습니다.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
     }
 }
