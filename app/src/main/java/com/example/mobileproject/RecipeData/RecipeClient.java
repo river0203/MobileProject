@@ -25,7 +25,8 @@ public class RecipeClient {
     private static String message;
     private RecipeModel recipeModel = RecipeModel.getInstance();
 
-    public void connectToServer() {try (Socket socket = new Socket(SERVER_IP, SERVER_PORT)) {
+    public void connectToServer() {
+        try (Socket socket = new Socket(SERVER_IP, SERVER_PORT)) {
 
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
             DataInputStream in = new DataInputStream(socket.getInputStream());
@@ -41,24 +42,24 @@ public class RecipeClient {
             byte[] data = message.getBytes();
 
             ByteBuffer b = ByteBuffer.allocate(4);
-            b.order(ByteOrder.LITTLE_ENDIAN);// byte포멧은 little 엔디언이다.
-            b.putInt(data.length);// 데이터 길이 전송
-            out.write(b.array(), 0, 4);// 데이터 전송
+            b.order(ByteOrder.LITTLE_ENDIAN);
+            b.putInt(data.length);
+            out.write(b.array(), 0, 4);
             out.write(data);
 
             data = new byte[4];
-            in.read(data, 0, 4);// 데이터 길이를 받는다.
-            b = ByteBuffer.wrap(data);// ByteBuffer를 통해 little 엔디언 형식으로 데이터 길이를 구한다.
+            in.read(data, 0, 4);
+            b = ByteBuffer.wrap(data);
             b.order(ByteOrder.LITTLE_ENDIAN);
             int length = b.getInt();
-            data = new byte[length];// 데이터를 받을 버퍼를 선언한다.
-            in.read(data, 0, length);// 데이터를 받는다.
+            data = new byte[length];
+            in.read(data, 0, length);
 
             // byte형식의 데이터를 string형식으로 변환한다.
             message = new String(data, "UTF-8");
+
         recipeModel.setJsonRecipe(message);
             System.out.println(message);
-
 
         } catch (SocketTimeoutException e) {
             Log.e("Socket Error", "Connection timed out", e);

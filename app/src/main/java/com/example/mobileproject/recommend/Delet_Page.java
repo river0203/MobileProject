@@ -45,13 +45,13 @@ public class Delet_Page extends AppCompatActivity {
         // 선택된 재료를 삭제 버튼 동작으로 처리
         Button completeButton = findViewById(R.id.completeButton);
         completeButton.setOnClickListener(v -> {
-            // 선택된 재료 출력
+
             System.out.println("삭제될 재료들: " + selectedIngredients);
 
             // RecipeModel에서 선택된 재료 제거
             recipeModel.removeIngredients(selectedIngredients);
 
-            // 결과 확인 후 MainActivity로 돌아가기
+            // MainActivity로 돌아가기
             System.out.println("모델에 들어있는 재료들: " + recipeModel.getIngredients());
             Intent intent = new Intent(Delet_Page.this, MainActivity.class);
             startActivity(intent);
