@@ -40,10 +40,15 @@ public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.ViewHolder> 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< Updated upstream
                 Intent intent = new Intent(v.getContext(), Step_Page.class);
                 intent.putExtra("menu_name", menu.getName());
                 intent.putStringArrayListExtra("menu_steps", new ArrayList<>(menu.getSteps()));
                 v.getContext().startActivity(intent);
+=======
+                Log.d("Menu Clicked", "Clicked item: " + menu.getName());
+
+>>>>>>> Stashed changes
             }
         });
     }
